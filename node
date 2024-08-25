@@ -1,0 +1,12 @@
+public class node {
+    int num;
+    String name;
+    node next;
+
+    public node(int num, String name) {
+        this.num = num;
+        this.name = name;
+
+        next = null;
+    }
+}
