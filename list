@@ -1,0 +1,124 @@
+public class list {
+    node head=this.head;
+    node tail=this.tail;
+
+    void addToHead(int x,String name){
+        node newHead = new node(x,name);
+
+        if (head == null){
+            head = newHead;
+            tail = newHead;
+            newHead.next = null;
+        } else{
+            newHead.next = head;
+            head = newHead;
+        }
+
+    }
+    void addToTail(int x,String name){
+        node newTail = new node(x,name);
+
+        if (head == null){
+            head = newTail;
+            tail = newTail;
+            newTail.next = null;
+        } else{
+            tail.next = newTail;
+            tail = newTail;
+            newTail.next = null;
+        }
+
+    }
+    void addInBetween(int x,String name, int indis){
+        node element = new node(x,name);
+
+        if (head == null && indis == 0){
+            head = element;
+            tail = element;
+            element.next = null;
+        } else  if (head != null && indis == 0) {
+            element.next = head;
+            head = element;
+        } else{
+            int n = 0;
+            node temp = head;
+            node temp2 = head;
+            while (temp!=null){
+                n++;
+
+                temp=temp.next;
+            } if (n==indis){
+                temp2.next = element;
+                element.next = temp;
+            } else {
+                temp = head;
+                int i=0;
+                while (i!=indis){
+                    temp2 = temp;
+                    temp = temp.next;
+                    i++;
+                }
+                temp2.next = element;
+                element.next = temp;
+            }
+        }
+
+    }
+    void removeToHead(){
+        if(head==null)
+            System.out.println("there is nothing to remove");
+        else if (head.next==null){
+            head=null;
+            tail=null;
+        } else
+            head = head.next;
+    }
+    void removeToTail(){
+        if(head==null)
+            System.out.println("there is nothing to remove");
+        else if (head.next==null){
+            head=null;
+            tail=null;
+        } else {
+            node temp = head;
+            node temp2 = head;
+            while (temp.next != null){
+                temp2 = temp;
+                temp = temp.next;
+            }
+            temp2.next = null;
+            tail = temp2;
+        }
+    }
+    void removeInBetween(int indis){
+        if(head==null)
+            System.out.println("there is nothing to remove");
+        else if (head.next==null){
+            head=null;
+            tail=null;
+        } else if (head != null && indis == 0){
+            head = head.next;
+        } else {
+            int i=0;
+            node temp = head;
+            node temp2 = head;
+            while (temp!=null){
+                i++;
+                temp = temp.next;
+            }
+            if (i==indis){
+                temp2.next = null;
+                tail = temp2;
+            } else {
+                int j=0;
+                while (j!=indis){
+                    temp2 = temp;
+                    temp = temp.next;
+                    j++;
+                }
+                temp2.next = temp.next;
+            }
+        }
+
+    }
+}
